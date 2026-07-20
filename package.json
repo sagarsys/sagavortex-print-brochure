@@ -1,0 +1,21 @@
+{
+  "name": "sagavortex-print-brochure",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SagaVortex Art Photography — fine-art print brochure (mobile-first single page).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "playwright-core": "^1.61.1",
+    "vite": "^5.4.0"
+  }
+}
