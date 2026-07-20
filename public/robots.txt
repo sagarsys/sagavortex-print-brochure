@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portrait-prints.sagavortex.art/sitemap.xml

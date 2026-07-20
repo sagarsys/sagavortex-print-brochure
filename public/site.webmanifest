@@ -1,0 +1,14 @@
+{
+  "name": "SagaVortex Art Photography — Fine-art Prints",
+  "short_name": "SagaVortex",
+  "description": "Fine-art photography prints, printed and signed by the artist in Amsterdam.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B0C",
+  "theme_color": "#0B0B0C",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
