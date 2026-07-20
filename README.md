@@ -46,7 +46,7 @@ an optimized JPEG **and** a WebP; the page serves WebP where supported via
 
 > After the site is live, set the real subdomain in `index.html` — it's used in
 > `<link rel="canonical">`, `og:url`, `robots.txt` and `sitemap.xml` (currently
-> `https://portrait-prints.sagavortex.art`).
+> `https://soulprints.sagavortex.art`).
 
 ## Deploying
 

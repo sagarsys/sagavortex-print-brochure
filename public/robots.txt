@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://souls.sagavortex.art/sitemap.xml
+Sitemap: https://soulprints.sagavortex.art/sitemap.xml
