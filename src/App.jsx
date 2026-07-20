@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 /* Change these in one place if anything moves. */
 const SHOP_URL = 'https://sagavortex.art'
 const CONTACT_URL = 'https://sagavortex.art/contact'
+const SOULS_URL = 'https://sagavortex.art/souls'
 const COLLECTION_URL = 'https://sagavortex.art'
 const BIO_URL = 'https://bio.site/sagavortex.art'
 const INSTAGRAM_URL = 'https://instagram.com/sagavortex.life'
@@ -18,7 +19,6 @@ const pieces = [
   { name: 'true-beauty',     w: 1280, h: 1600, alt: 'True beauty — fine-art portrait print',            caption: 'True beauty · Portrait' },
   { name: 'sun-kissed',      w: 1280, h: 1600, ratio: '5 / 4', alt: 'Sun-kissed — a golden-hour embrace',           caption: 'Sun kissed · Event' },
   { name: 'art-of-receiving',w: 1600, h: 1280, ratio: '5 / 4', alt: 'The Art of Receiving — a workshop moment',     caption: 'The Art of Receiving · Event' },
-  { name: 'sleeping-beauty', w: 1600, h: 1200, full: true, alt: 'Sleeping beauty — resting in a field of tulips',   caption: 'Sleeping beauty · Portrait' },
 ]
 
 const features = [
@@ -178,6 +178,26 @@ export default function App() {
           <p>Your captured moment becomes a signed fine-art print — same archival paper, same three sizes. Yours within days.</p>
           <a className="moment__link" href={CONTACT_URL} target="_blank" rel="noopener">Order your print →</a>
         </div>
+      </section>
+
+      {/* 5b · Souls — sit for a portrait */}
+      <section className="souls" aria-label="Portrait sessions">
+        <div className="souls__media reveal" data-reveal>
+          <Pic className="souls__img" name="sleeping-beauty" w={1600} h={1200}
+               alt="Sleeping beauty — a portrait session in a field of tulips" />
+        </div>
+        <p className="eyebrow reveal" data-reveal>Sit for a portrait · Souls</p>
+        <h2 className="souls__title reveal" data-reveal>Timeless beauty, made with you.</h2>
+        <p className="souls__body reveal" data-reveal>
+          Some images you don't just look at — you step into. A guided portrait session,
+          unhurried and safe, where you're not photographed so much as truly seen. Together we
+          make something that outlasts the moment: honest, luminous, the truest picture of who
+          you are — made to hold for a lifetime. Butterflies can't see their own wings; this is
+          where you see yours.
+        </p>
+        <a className="souls__link reveal" data-reveal href={SOULS_URL} target="_blank" rel="noopener">
+          Discover a session →
+        </a>
       </section>
 
       {/* 6 · Footer / CTA */}

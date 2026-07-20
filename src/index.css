@@ -210,3 +210,14 @@ picture { display: contents; }          /* let <img> lay out directly */
 @media (min-width: 1280px) {
   .page { max-width: 2500px; }
 }
+
+/* ==========================================================================
+   5b · SOULS — portrait-session invitation (quiet statement after "moment")
+   ========================================================================== */
+.souls__media { margin: 0 0 34px; }
+.souls__img { width: 100%; height: auto; border-radius: 2px; }
+.souls { padding: 64px var(--pad) 56px; max-width: 680px; margin: 0 auto; text-align: center; border-top: 1px solid var(--hair-soft); }
+.souls__title { margin: 0 0 20px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(38px, 10vw, 52px); line-height: 1.1; text-wrap: balance; }
+.souls__body { margin: 0 auto; max-width: 560px; font-size: clamp(18px, 5vw, 23px); line-height: 1.62; color: var(--muted-72); }
+.souls__link { display: inline-block; margin: 28px 0 0; font-size: 17px; font-weight: 600; letter-spacing: 0.04em; border-bottom: 1px solid rgba(201,167,106,.4); padding-bottom: 2px; }
+@media (min-width: 900px) { .souls { padding: 110px 64px 72px; } }
