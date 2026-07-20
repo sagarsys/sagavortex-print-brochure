@@ -1,0 +1,212 @@
+/* ============================================================
+   SagaVortex — Fine-art Print Brochure
+   Mobile-first, with a prominent wider desktop layout.
+   Palette:  bg #0B0B0C  ·  text #EDE9E3  ·  accent #C9A76A
+   Type:     Cormorant Garamond (display) · Mulish (body)
+   ============================================================ */
+
+:root {
+  --bg: #0B0B0C;
+  --text: #EDE9E3;
+  --accent: #C9A76A;
+  --accent-hover: #E0C48F;
+  --muted-72: rgba(237, 233, 227, 0.72);
+  --muted-62: rgba(237, 233, 227, 0.62);
+  --muted-55: rgba(237, 233, 227, 0.55);
+  --muted-50: rgba(237, 233, 227, 0.50);
+  --muted-45: rgba(237, 233, 227, 0.45);
+  --muted-35: rgba(237, 233, 227, 0.35);
+  --hair: rgba(237, 233, 227, 0.12);
+  --hair-soft: rgba(237, 233, 227, 0.10);
+
+  --col: 480px;   /* reading column on phones */
+  --pad: 28px;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Mulish, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+::selection { background: var(--accent); color: var(--bg); }
+img { display: block; max-width: 100%; }
+picture { display: contents; }          /* let <img> lay out directly */
+
+.page { width: 100%; max-width: var(--col); margin: 0 auto; background: var(--bg); position: relative; }
+
+/* Fixed wordmark bar — the single logo, stays at the top on scroll */
+.sitebar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  display: flex; justify-content: center; padding: 20px 24px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11,11,12,.55) 0%, rgba(11,11,12,0) 100%);
+}
+.sitebar a { pointer-events: auto; line-height: 0; }
+.sitebar img { width: 210px; max-width: 62vw; height: auto; filter: drop-shadow(0 1px 10px rgba(0,0,0,.6)); }
+
+/* content-visibility keeps off-screen sections out of first paint work */
+.pieces, .why, .prices, .moment, .footer { content-visibility: auto; contain-intrinsic-size: auto 800px; }
+
+/* ---- Shared helpers ---- */
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 17px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent);
+}
+
+/* ---- Scroll-reveal ---- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* ==========================================================================
+   1 · COVER
+   ========================================================================== */
+.cover { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; }
+.cover__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.cover__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,12,.72) 0%, rgba(11,11,12,0) 30%, rgba(11,11,12,0) 55%, rgba(11,11,12,.88) 100%);
+}
+.cover__foot { position: relative; padding: 0 var(--pad) 44px; display: flex; flex-direction: column; gap: 24px; }
+.cover__title {
+  margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: clamp(52px, 15vw, 72px); line-height: 1.03; letter-spacing: 0.01em; text-wrap: balance;
+}
+.cover__cue { display: flex; align-items: center; gap: 12px; }
+.cover__cue-line { display: block; width: 1px; height: 32px; background: rgba(237,233,227,.5); animation: cue 2.4s ease-in-out infinite; }
+.cover__cue-label { font-size: 15px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-55); }
+@keyframes cue { 0%,100% { transform: translateY(0); opacity: .7; } 50% { transform: translateY(6px); opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .cover__cue-line { animation: none; } }
+
+/* ==========================================================================
+   2 · THE PIECES
+   ========================================================================== */
+.pieces { padding: 64px 0 8px; }
+.pieces__intro { padding: 0 var(--pad) 32px; }
+.pieces__title { margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(40px, 11vw, 52px); line-height: 1.1; }
+.piece { margin: 0 0 48px; }
+.piece:last-child { margin-bottom: 0; }
+.piece__img { width: 100%; height: auto; }
+.piece figcaption { padding: 14px var(--pad) 0; font-size: 15px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-55); }
+
+/* ==========================================================================
+   3 · WHY THESE PRINTS
+   ========================================================================== */
+.why { padding: 72px var(--pad) 16px; }
+.why__list { display: flex; flex-direction: column; }
+.why__row { padding: 24px 0; border-bottom: 1px solid var(--hair); }
+.why__row:last-child { border-bottom: 0; }
+.why__row h3 { margin: 0 0 6px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 9vw, 44px); line-height: 1.12; }
+.why__row p { margin: 0; font-size: clamp(18px, 5vw, 24px); line-height: 1.5; color: var(--muted-62); }
+
+/* ==========================================================================
+   4 · SIZES & PRICES
+   ========================================================================== */
+.prices { padding: 56px var(--pad); }
+.prices__list { display: flex; flex-direction: column; border-top: 1px solid var(--hair); }
+.prices__row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--hair); }
+.prices__size { display: flex; flex-direction: column; gap: 6px; }
+.prices__size b { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 15vw, 66px); font-weight: 500; }
+.prices__dim { font-size: clamp(15px, 4vw, 19px); letter-spacing: 0.1em; white-space: nowrap; color: var(--muted-45); }
+.prices__amt { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 13vw, 60px); font-weight: 500; color: var(--accent); }
+.prices__note { margin: 16px 0 0; font-size: clamp(16px, 4.5vw, 21px); line-height: 1.6; letter-spacing: 0.04em; color: var(--muted-50); }
+.prices__link { display: inline-block; margin: 22px 0 0; font-size: 17px; font-weight: 600; letter-spacing: 0.04em; border-bottom: 1px solid rgba(201,167,106,.4); padding-bottom: 2px; }
+
+/* ==========================================================================
+   5 · YOUR MOMENT, PRINTED
+   ========================================================================== */
+.moment { padding: 16px 0 0; text-align: center; }
+.moment__img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.moment__body { padding: 40px var(--pad) 64px; max-width: 620px; margin: 0 auto; }
+.moment .eyebrow { color: var(--accent); font-weight: 700; font-size: 20px; letter-spacing: 0.24em; }
+.moment__title { margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(40px, 11vw, 52px); line-height: 1.1; text-wrap: balance; }
+.moment__body p { margin: 0; font-size: clamp(18px, 5vw, 24px); line-height: 1.5; color: var(--muted-72); }
+.moment__link { display: inline-block; margin: 22px 0 0; font-size: 17px; font-weight: 600; letter-spacing: 0.04em; border-bottom: 1px solid rgba(201,167,106,.4); padding-bottom: 2px; }
+
+/* ==========================================================================
+   6 · FOOTER / CTA  (trimmed)
+   ========================================================================== */
+.footer { padding: 64px var(--pad) 56px; border-top: 1px solid var(--hair-soft); display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+.footer__mark { width: clamp(130px, 40vw, 168px); height: auto; }
+.footer__cta {
+  display: inline-block; margin: 6px 0 28px; background: var(--accent); color: var(--bg);
+  font-size: clamp(14px, 3.6vw, 16px); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 15px 34px; border-radius: 2px;
+}
+.footer__cta:hover { color: var(--bg); background: var(--accent-hover); }
+.footer__qr-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.footer__qr { width: clamp(150px, 46vw, 180px); height: auto; aspect-ratio: 1/1; border-radius: 4px; background: #fff; }
+.footer__qr-link { font-size: 14px; letter-spacing: 0.04em; color: var(--muted-62); border-bottom: 1px solid rgba(201,167,106,.3); padding-bottom: 2px; }
+.footer__qr-link:hover { color: var(--accent); }
+.footer__social { display: flex; flex-direction: column; gap: 8px; }
+.footer__handle { font-size: clamp(16px, 4vw, 18px); letter-spacing: 0.06em; color: var(--text); }
+.footer__nudge { margin: 4px 0 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(21px, 5.5vw, 25px); color: rgba(237,233,227,.8); }
+.footer__copy { margin: 8px 0 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-35); line-height: 1.7; }
+.footer__copy a { color: var(--muted-50); }
+.footer__copy a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   DESKTOP — prominent, wider, refined type
+   ========================================================================== */
+@media (min-width: 900px) {
+  :root { --pad: 64px; }
+  .page { max-width: 1200px; }
+
+  .cover__foot { padding: 0 64px 64px; }
+  .cover__foot > div:first-child { max-width: 640px; }
+  .cover__title { font-size: 68px; }
+  .eyebrow { font-size: 15px; }
+
+  .pieces { padding: 120px 0 40px; }
+  .pieces__intro { padding: 0 64px 48px; max-width: 900px; }
+  .pieces__title { font-size: 50px; }
+  .pieces__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px 32px; padding: 0 64px; align-items: start; }
+  .piece { margin: 0; }
+  .piece__img { width: 100%; height: auto; border-radius: 2px; }   /* full art — never cropped */
+  /* Lone final image: centre it rather than stretch it across both columns. */
+  .pieces__grid .piece:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 640px; margin: 0 auto; }
+  .piece figcaption { padding: 14px 2px 0; font-size: 13px; }
+
+  .why { padding: 120px 64px 40px; max-width: 900px; margin: 0 auto; }
+  .why__list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
+  .why__row { padding: 28px 0; }
+  .why__row:nth-last-child(2) { border-bottom: 0; }
+  .why__row h3 { font-size: 30px; }
+  .why__row p { font-size: 19px; }
+
+  .prices { padding: 96px 64px; max-width: 900px; margin: 0 auto; }
+  .prices__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 0; }
+  .prices__row { flex-direction: column; align-items: flex-start; gap: 14px; padding: 32px 28px; border: 1px solid var(--hair); border-radius: 4px; }
+  .prices__size b { font-size: 60px; }
+  .prices__amt { font-size: 44px; }
+  .prices__dim { font-size: 16px; }
+  .prices__note { text-align: center; font-size: 18px; margin-top: 32px; }
+  .prices__link { text-align: center; display: block; width: max-content; margin: 20px auto 0; }
+
+  .moment { display: block; text-align: center; padding: 120px 64px; max-width: 900px; margin: 0 auto; }
+  .moment__img { aspect-ratio: 4 / 5; object-fit: cover; border-radius: 2px; max-width: 460px; margin: 0 auto; }
+  .moment__body { padding: 40px 0 0; max-width: 620px; margin: 0 auto; }
+  .moment__title { font-size: 46px; }
+  .moment__body p { font-size: 20px; }
+
+  .footer { padding: 100px 64px 72px; gap: 24px; }
+  .footer__mark { width: 120px; }
+  .footer__cta { font-size: 15px; padding: 15px 38px; margin-bottom: 22px; }
+  .footer__qr { width: 168px; }
+  .footer__nudge { font-size: 25px; }
+
+  .sitebar { padding: 26px 32px; }
+  .sitebar img { width: 240px; }
+}
+
+/* Large desktop: open the canvas up wide */
+@media (min-width: 1280px) {
+  .page { max-width: 2500px; }
+}
