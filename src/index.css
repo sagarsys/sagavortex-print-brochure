@@ -171,7 +171,7 @@ picture { display: contents; }          /* let <img> lay out directly */
   .piece { margin: 0; }
   .piece__img { width: 100%; height: auto; border-radius: 2px; }   /* full art — never cropped */
   /* Lone final image: centre it rather than stretch it across both columns. */
-  .pieces__grid .piece:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 640px; margin: 0 auto; }
+  .pieces__grid .piece--full { grid-column: 1 / -1; }
   .piece figcaption { padding: 14px 2px 0; font-size: 13px; }
 
   .why { padding: 120px 64px 40px; max-width: 900px; margin: 0 auto; }

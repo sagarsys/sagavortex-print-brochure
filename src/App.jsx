@@ -10,11 +10,15 @@ const INSTAGRAM_HANDLE = '@sagavortex.life'
 
 /* --- Content -------------------------------------------------------------- */
 const pieces = [
-  { name: 'full-print',    w: 1342, h: 913,  alt: 'A4 fine-art print on the studio cutting table', caption: 'A4 · Straight off the press' },
   { name: 'hero-redhead',  w: 1100, h: 733,  alt: 'Amber-light fine-art portrait print',           caption: 'Amber Light · Portrait' },
+  { name: 'full-print',    w: 1342, h: 913,  alt: 'A4 fine-art print on the studio cutting table', caption: 'A4 Print · Straight off the press' },
+  { name: 'lotus-portrait',w: 733,  h: 1100, alt: 'Close detail of an archival matte print',        caption: 'Detail · Archival matte paper' },
   { name: 'stack',         w: 733,  h: 1100, alt: 'A stack of signed archival prints',              caption: 'Signed editions · Ready to travel' },
-  { name: 'lotus-portrait',w: 733,  h: 1100, alt: 'Close detail of an archival matte print',        caption: 'Detail · Archival matte' },
   { name: 'hero-water',    w: 1200, h: 1500, alt: 'Water-lilies fine-art portrait print',           caption: 'Beauty and Grace · Portrait' },
+  { name: 'true-beauty',     w: 1280, h: 1600, alt: 'True beauty — fine-art portrait print',            caption: 'True beauty · Portrait' },
+  { name: 'sun-kissed',      w: 1280, h: 1600, ratio: '5 / 4', alt: 'Sun-kissed — a golden-hour embrace',           caption: 'Sun kissed · Event' },
+  { name: 'art-of-receiving',w: 1600, h: 1280, ratio: '5 / 4', alt: 'The Art of Receiving — a workshop moment',     caption: 'The Art of Receiving · Event' },
+  { name: 'sleeping-beauty', w: 1600, h: 1200, full: true, alt: 'Sleeping beauty — resting in a field of tulips',   caption: 'Sleeping beauty · Portrait' },
 ]
 
 const features = [
@@ -30,11 +34,11 @@ const prices = [
   { size: 'A2', dim: '42 × 59.4 cm', amount: '€ 150' },
 ]
 
-const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`
+const asset = (name) => `${import.meta.env.BASE_URL}assets/images/${name}`
 
 /* <picture> with a WebP source + JPEG fallback. width/height reserve space so
    there is no layout shift; priority images load eagerly for a fast LCP. */
-function Pic({ name, w, h, alt, className, priority = false }) {
+function Pic({ name, w, h, alt, className, priority = false, ratio }) {
   return (
     <picture>
       <source srcSet={asset(`${name}.webp`)} type="image/webp" />
@@ -44,6 +48,7 @@ function Pic({ name, w, h, alt, className, priority = false }) {
         alt={alt}
         width={w}
         height={h}
+        style={ratio ? { aspectRatio: ratio, objectFit: 'cover' } : undefined}
         decoding="async"
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
@@ -120,8 +125,8 @@ export default function App() {
         </div>
         <div className="pieces__grid">
           {pieces.map((p) => (
-            <figure className="piece reveal" data-reveal key={p.name}>
-              <Pic name={p.name} w={p.w} h={p.h} alt={p.alt} className="piece__img" />
+            <figure className={`piece reveal${p.full ? ' piece--full' : ''}`} data-reveal key={p.name}>
+              <Pic name={p.name} w={p.w} h={p.h} alt={p.alt} className="piece__img" ratio={p.ratio} />
               <figcaption>{p.caption}</figcaption>
             </figure>
           ))}
