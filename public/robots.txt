@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portrait-prints.sagavortex.art/sitemap.xml
+Sitemap: https://souls.sagavortex.art/sitemap.xml
